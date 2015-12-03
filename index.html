@@ -24,9 +24,12 @@
 <body ng-controller="HelpChennaiController">
     <header class="header">
         <img src="imgs/header.jpg" /><br />
-        
+        <a href="javascript:;" ng-click="addListing()" class="helpaction"><img src="imgs/helpaction.png" /></a>
     </header>
-    <div class="container">
+
+
+    <!-- Listing -->
+    <div class="container" ng-show="listmode">
         <h3>Help near you...</h3>
         <ul>
             <li ng-repeat="list in listing">
@@ -48,6 +51,59 @@
         </ul>
 
     </div>
+
+
+    <!-- Add form -->
+    <div class="container" ng-hide="listmode">
+        <h3>I want to help...</h3>
+
+        <form >
+            <div class="floating-placeholder floating-placeholder-float">
+              <input id="title" name="title" type="text" ng-model="postdata.title"/>
+              <label for="title">Help Title</label>
+            </div>
+            <B>Pick the help you can provide  </B><br /><br />
+            
+            <div class="floating-placeholder floating-placeholder-float" ng-repeat="(key, value)  in tags">
+              <input id="{{key}}" name="{{key}}" type="checkbox" ng-model="value" ng-change="populateTags(key, value)" />
+              <label for="{{key}}">{{key}}, {{value}}</label>
+            </div>
+            <div class="floating-placeholder floating-placeholder-float" >
+              <input id="name" name="name" type="text"  ng-model="postdata.name"/>
+              <label for="name">Your Name</label>
+            </div>
+            <div class="floating-placeholder floating-placeholder-float">
+              <textarea id="address" name="address" ng-model="postdata.address" ></textarea>
+              <label for="address">Address</label>
+            </div>
+            <div class="floating-placeholder floating-placeholder-float">
+              <input id="locality" name="locality" type="text"  ng-model="postdata.locality" />
+              <label for="locality">Locality</label>
+            </div>
+            <div class="floating-placeholder floating-placeholder-float">
+              <input id="phone" name="phone" type="number"  ng-model="postdata.phone"/>
+              <label for="phone">Phone</label>
+            </div>
+            
+                        <!-- <div class="floating-placeholder floating-placeholder-float">
+              <input id="food" name="food" type="checkbox"  />
+              <label for="food">Food</label>
+            </div>
+                        <div class="floating-placeholder floating-placeholder-float">
+              <input id="medicine" name="medicine" type="checkbox"  />
+              <label for="medicine">Medicine</label>
+            </div>
+                        <div class="floating-placeholder floating-placeholder-float">
+              <input id="recharge" name="recharge" type="checkbox"  />
+              <label for="recharge">Recharge</label>
+            </div> -->
+             <a class="call" href="javascript:;" ng-click="post(postdata)">Post</a>
+            
+        </form>
+    </div>
+
+
+
 </body>
 <script src="js/list.js"></script>
 <html>
