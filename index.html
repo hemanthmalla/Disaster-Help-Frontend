@@ -63,10 +63,10 @@
               <label for="title">Help Title</label>
             </div>
             <B>Pick the help you can provide  </B><br /><br />
-            
+
             <div class="floating-placeholder floating-placeholder-float" ng-repeat="(key, value)  in tags">
               <input id="{{key}}" name="{{key}}" type="checkbox" ng-model="value" ng-change="populateTags(key, value)" />
-              <label for="{{key}}">{{key}}, {{value}}</label>
+              <label for="{{key}}">{{key}}</label>
             </div>
             <div class="floating-placeholder floating-placeholder-float" >
               <input id="name" name="name" type="text"  ng-model="postdata.name"/>
